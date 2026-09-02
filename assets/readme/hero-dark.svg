@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="420" viewBox="0 0 1200 420"
+     role="img" aria-labelledby="hero-title hero-desc">
+  <title id="hero-title">Adderall: agentic formulation, patient information</title>
+  <desc id="hero-desc">A prescription-label style title card for Adderall, a coding agent ruleset. Contraindicated chat phrases are struck out. A terminal card shows a matter-of-fact fix with numbered steps and one next action.</desc>
+
+  <rect width="1200" height="420" rx="24" fill="#0F1114"/>
+
+  <g id="label-block">
+    <g id="capsule">
+      <rect x="64" y="82" width="20" height="16" rx="8" fill="#FBBF24"/>
+      <rect x="80" y="82" width="20" height="16" rx="8" fill="#E9E7E2"/>
+    </g>
+    <text x="114" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2" fill="#8B919C">PATIENT INFORMATION · RX ONLY</text>
+
+    <text x="62" y="192" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="96" font-weight="800" letter-spacing="-2" fill="#E9E7E2">ADDERALL</text>
+    <text x="64" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#8B919C">agentic formulation · amphetamine-free</text>
+
+    <text x="64" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="23" fill="#E9E7E2">The laziest code that works,</text>
+    <text x="64" y="288" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="23" fill="#E9E7E2">reported action-first.</text>
+
+    <g id="label-rows" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">
+      <line x1="64" y1="308" x2="620" y2="308" stroke="#333942" stroke-width="1.5"/>
+      <text x="64" y="332" fill="#8B919C">YAGNI LADDER (7) · OUTPUT RULES (10) · VOICE RULES (27)</text>
+      <text x="64" y="358" fill="#8B919C">ROUTE: SYSTEM PROMPT · REFILLS: UNLIMITED (MIT)</text>
+      <line x1="64" y1="374" x2="620" y2="374" stroke="#333942" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <g id="contraindicated-phrases" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#8B919C">
+    <text x="64" y="404" fill="#8B919C">Not for:</text>
+    <text x="160" y="404" fill="#E9E7E2">Great question!</text>
+    <line x1="156" y1="398" x2="322" y2="398" stroke="#E06A55" stroke-width="2.5"/>
+    <text x="346" y="404" fill="#E9E7E2">Hope this helps!</text>
+    <line x1="342" y1="398" x2="518" y2="398" stroke="#E06A55" stroke-width="2.5"/>
+  </g>
+
+  <g id="reply-card">
+    <rect x="690" y="62" width="446" height="300" rx="16" fill="#171A1F" stroke="#333942" stroke-width="1.5"/>
+    <circle cx="716" cy="88" r="5" fill="#333942"/>
+    <circle cx="734" cy="88" r="5" fill="#333942"/>
+    <circle cx="752" cy="88" r="5" fill="#333942"/>
+    <text x="1112" y="94" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#8B919C">agent reply · Rx only</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20">
+      <text x="714" y="138" fill="#8B919C">$ fix the failing login test</text>
+      <text x="714" y="172" fill="#E9E7E2">Test fails at auth.spec.ts:42:</text>
+      <text x="714" y="198" fill="#E9E7E2">expected 200, got 401.</text>
+      <text x="714" y="224" fill="#E9E7E2">Cause: missing auth header.</text>
+      <text x="714" y="258" fill="#E9E7E2">1. Open src/auth.ts</text>
+      <text x="714" y="284" fill="#E9E7E2">2. Add Authorization header</text>
+      <text x="714" y="310" fill="#E9E7E2">3. npm test -- auth.spec.ts</text>
+      <text x="714" y="340" fill="#FBBF24" font-weight="700">Next:</text>
+      <text x="778" y="340" fill="#E9E7E2">paste the first failing line.</text>
+    </g>
+  </g>
+</svg>

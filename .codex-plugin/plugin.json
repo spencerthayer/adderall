@@ -1,0 +1,38 @@
+{
+  "name": "adderall",
+  "version": "0.1.0",
+  "description": "Focus for Codex: ships the laziest solution that works and reports it action-first. Merges ponytail's YAGNI ladder with i-have-adhd's output shaping.",
+  "author": {
+    "name": "Spencer Thayer",
+    "url": "https://github.com/spencerthayer"
+  },
+  "homepage": "https://github.com/spencerthayer/adderall",
+  "repository": "https://github.com/spencerthayer/adderall",
+  "license": "MIT",
+  "keywords": [
+    "yagni",
+    "minimalism",
+    "output-style",
+    "productivity",
+    "skills",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Adderall",
+    "shortDescription": "Lazy solutions, action-first answers",
+    "longDescription": "Focus mode for Codex: the laziest solution that actually works (YAGNI ladder, stdlib and native features first, shortest working diff) reported action-first (next action first, numbered steps, no preamble, no recap).",
+    "developerName": "Spencer Thayer",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://github.com/spencerthayer/adderall",
+    "defaultPrompt": [
+      "Use adderall for this task.",
+      "Give me the laziest solution that works, action-first.",
+      "Review this for over-engineering and buried answers."
+    ],
+    "brandColor": "#F59E0B"
+  }
+}

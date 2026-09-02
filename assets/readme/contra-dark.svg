@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="130" viewBox="0 0 1200 130"
+     role="img" aria-labelledby="contra-title contra-desc">
+  <title id="contra-title">Contraindications</title>
+  <desc id="contra-desc">Adderall is not indicated for general knowledge, prose, translation, summaries, or recipes. Treatment is discontinued for the duration of such requests.</desc>
+
+  <rect width="1200" height="130" rx="18" fill="#0F1114"/>
+
+  <rect x="64" y="47" width="118" height="30" rx="15" fill="#E06A55"/>
+  <text x="123" y="68" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700" fill="#FFFFFF">OFF-LABEL</text>
+  <text x="200" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#E9E7E2">Not indicated for:</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#8B919C">
+    <text x="356" y="68">general knowledge</text>
+    <text x="556" y="68">prose</text>
+    <text x="632" y="68">translation</text>
+    <text x="764" y="68">summaries</text>
+    <text x="892" y="68">recipes</text>
+  </g>
+  <line x1="64" y1="94" x2="1136" y2="94" stroke="#333942" stroke-width="1.5"/>
+  <text x="64" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">For these requests, discontinue treatment for the duration. Resume with /adderall.</text>
+</svg>

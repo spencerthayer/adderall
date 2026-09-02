@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="270" viewBox="0 0 1200 270"
+     role="img" aria-labelledby="adv-title adv-desc">
+  <title id="adv-title">Reported adverse reactions</title>
+  <desc id="adv-desc">Four reported reactions with their course: suppressed boilerplate appetite, smaller diffs, absence of em dashes, and ASSUMPTIONS sections. Tolerance develops within five to seven days. No side effects were reported by the code that was never written.</desc>
+
+  <rect width="1200" height="270" rx="18" fill="#0F1114"/>
+
+  <text x="64" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="800" fill="#E9E7E2">REPORTED ADVERSE REACTIONS</text>
+  <text x="1136" y="52" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">tolerance develops in 5 to 7 days</text>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#E9E7E2">
+    <text x="64" y="106">suppressed boilerplate appetite</text>
+    <text x="64" y="146">smaller diffs than expected</text>
+    <text x="64" y="186">the complete absence of em dashes</text>
+    <text x="64" y="226">an ASSUMPTIONS section where a guess used to be</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">
+    <text x="1136" y="106" text-anchor="end">course: codebase weight loss</text>
+    <text x="1136" y="146" text-anchor="end">course: documented in examples/</text>
+    <text x="1136" y="186" text-anchor="end">course: permanent</text>
+    <text x="1136" y="226" text-anchor="end">on material uncertainty only</text>
+  </g>
+
+  <line x1="64" y1="244" x2="1136" y2="244" stroke="#333942" stroke-width="1.5"/>
+  <text x="600" y="264" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">No side effects were reported by the code that was never written.</text>
+</svg>

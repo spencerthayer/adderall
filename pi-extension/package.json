@@ -1,0 +1,9 @@
+{
+  "name": "adderall-pi-extension",
+  "version": "0.1.0",
+  "description": "Adderall focus mode for the pi coding agent: laziest solution that works, reported action-first.",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "https://github.com/spencerthayer/adderall"
+}

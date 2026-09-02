@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="480" viewBox="0 0 1200 480"
+     role="img" aria-labelledby="clin-title clin-desc">
+  <title id="clin-title">Observed clinical response: untreated vs treated</title>
+  <desc id="clin-desc">Two panels. Untreated: a flatpickr install, an 86-line wrapper, a timezone discussion, and no tests. Treated at 10mg: a native input, a matter-of-fact fix with three numbered steps and one next action.</desc>
+
+  <rect width="1200" height="480" rx="18" fill="#0F1114"/>
+
+  <g id="untreated-panel">
+    <rect x="64" y="64" width="520" height="384" rx="14" fill="#241A17" stroke="#E06A55" stroke-width="1.5"/>
+    <text x="88" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#E06A55">UNTREATED</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">
+      <text x="88" y="142" fill="#E9E7E2">Great question!</text>
+      <line x1="84" y1="136" x2="248" y2="136" stroke="#E06A55" stroke-width="2.5"/>
+      <text x="88" y="176" fill="#8B919C">$ npm install flatpickr react-flatpickr</text>
+      <text x="88" y="208" fill="#8B919C">DatePickerWrapper.tsx · 86 lines</text>
+      <text x="88" y="240" fill="#8B919C">timezone discussion · 14 replies</text>
+      <text x="88" y="272" fill="#8B919C">config object, themes, locales</text>
+      <text x="88" y="304" fill="#8B919C">tests: none</text>
+    </g>
+    <text x="88" y="416" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" fill="#8B919C">The answer starts in paragraph four.</text>
+  </g>
+
+  <g id="treated-panel">
+    <rect x="616" y="64" width="520" height="384" rx="14" fill="#171A1F" stroke="#333942" stroke-width="1.5"/>
+    <text x="640" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#D99E26">TREATED · 10MG</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">
+      <text x="640" y="142" fill="#E9E7E2">&lt;!-- adderall: browser has one --&gt;</text>
+      <text x="640" y="174" fill="#E9E7E2">&lt;input type="date"&gt;</text>
+      <text x="640" y="212" fill="#8B919C">auth.spec.ts:42: expected 200, got 401</text>
+      <text x="640" y="244" fill="#8B919C">Cause: missing auth header.</text>
+      <text x="640" y="282" fill="#E9E7E2">1. Open src/auth.ts</text>
+      <text x="640" y="314" fill="#E9E7E2">2. Add Authorization header</text>
+      <text x="640" y="346" fill="#E9E7E2">3. npm test -- auth.spec.ts</text>
+      <text x="640" y="384" fill="#FBBF24" font-weight="700">Next:</text>
+      <text x="704" y="384" fill="#E9E7E2">paste the first failing line.</text>
+    </g>
+    <text x="640" y="416" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" fill="#8B919C">The answer is the first line.</text>
+  </g>
+</svg>

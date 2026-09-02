@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="120" viewBox="0 0 1200 120"
+     role="img" aria-labelledby="build-title build-desc">
+  <title id="build-title">System 1: the build, the laziest solution that works</title>
+  <desc id="build-desc">Section banner for the build system. The agent climbs a YAGNI ladder: skip, reuse, stdlib, native, installed dependency, one line, then the minimum that works.</desc>
+
+  <rect width="1200" height="120" rx="18" fill="#0F1114"/>
+  <line x1="1136" y1="24" x2="1136" y2="96" stroke="#333942" stroke-width="1.5"/>
+
+  <g id="capsule">
+    <rect x="64" y="52" width="18" height="14" rx="7" fill="#FBBF24"/>
+    <rect x="78" y="52" width="18" height="14" rx="7" fill="#E9E7E2"/>
+  </g>
+  <text x="110" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="40" font-weight="800" letter-spacing="-1" fill="#E9E7E2">SYSTEM 1 · BUILD</text>
+  <text x="110" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#8B919C">Seven rungs. Stop at the first one that holds.</text>
+
+  <text x="1100" y="66" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">just one more abstraction</text>
+  <line x1="900" y1="60" x2="1104" y2="60" stroke="#E06A55" stroke-width="2.5"/>
+</svg>

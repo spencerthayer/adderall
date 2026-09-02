@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="210" viewBox="0 0 1200 210"
+     role="img" aria-labelledby="routes-title routes-desc">
+  <title id="routes-title">Routes of administration</title>
+  <desc id="routes-desc">Four administration routes: Claude Code via plugin or copy, OpenCode via plugin and flag, Cursor via copy, and Codex, pi, or any other agent via the generic skills directory.</desc>
+
+  <rect width="1200" height="210" rx="18" fill="#0F1114"/>
+
+  <text x="64" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="800" fill="#E9E7E2">ROUTES OF ADMINISTRATION</text>
+  <text x="1136" y="52" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">one dose per agent</text>
+
+  <g id="route-claude">
+    <rect x="64" y="76" width="252" height="104" rx="12" fill="#171A1F"/>
+    <text x="80" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#E9E7E2">Claude Code</text>
+    <text x="80" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#D99E26">plugin or copy</text>
+    <text x="80" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">~/.claude/skills</text>
+  </g>
+
+  <g id="route-opencode">
+    <rect x="340" y="76" width="252" height="104" rx="12" fill="#171A1F"/>
+    <text x="356" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#E9E7E2">OpenCode</text>
+    <text x="356" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#D99E26">plugin + flag</text>
+    <text x="356" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">~/.config/opencode</text>
+  </g>
+
+  <g id="route-cursor">
+    <rect x="616" y="76" width="252" height="104" rx="12" fill="#171A1F"/>
+    <text x="632" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#E9E7E2">Cursor</text>
+    <text x="632" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#D99E26">copy</text>
+    <text x="632" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">.cursor/skills</text>
+  </g>
+
+  <g id="route-generic">
+    <rect x="892" y="76" width="244" height="104" rx="12" fill="#171A1F"/>
+    <text x="908" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#E9E7E2">Codex · pi · any</text>
+    <text x="908" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#D99E26">copy</text>
+    <text x="908" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">.agents/skills</text>
+  </g>
+</svg>

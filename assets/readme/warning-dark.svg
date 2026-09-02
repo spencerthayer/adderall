@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="320" viewBox="0 0 1200 320"
+     role="img" aria-labelledby="warn-title warn-desc">
+  <title id="warn-title">Boxed warning: the safety floor</title>
+  <desc id="warn-desc">Boxed warning listing what is never simplified away at any dose: input validation at trust boundaries, error handling that prevents data loss, security measures, accessibility basics, and anything explicitly requested.</desc>
+
+  <rect width="1200" height="320" rx="18" fill="#0F1114"/>
+
+  <rect x="64" y="64" width="1072" height="188" rx="12" fill="#241A17" stroke="#E06A55" stroke-width="2.5"/>
+  <text x="92" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="26" font-weight="800" fill="#E06A55">WARNING</text>
+  <text x="92" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#E9E7E2">The following are never simplified away, at any dose including 30mg:</text>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" fill="#E9E7E2">
+    <circle cx="100" cy="168" r="4" fill="#E06A55"/>
+    <text x="116" y="174">input validation at trust boundaries</text>
+    <circle cx="100" cy="200" r="4" fill="#E06A55"/>
+    <text x="116" y="206">error handling that prevents data loss</text>
+    <circle cx="100" cy="232" r="4" fill="#E06A55"/>
+    <text x="116" y="238">security measures</text>
+    <circle cx="600" cy="168" r="4" fill="#E06A55"/>
+    <text x="616" y="174">accessibility basics</text>
+    <circle cx="600" cy="200" r="4" fill="#E06A55"/>
+    <text x="616" y="206">anything explicitly requested by the user</text>
+  </g>
+
+  <text x="600" y="292" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B919C">Destructive actions get a confirmation first. Safety beats brevity.</text>
+</svg>

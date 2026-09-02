@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "attention": {
+    "mode": "lazy-summary-gated",
+    "summary_max_chars": 180,
+    "phase1": "Read this manifest to identify the adderall skill or dose.",
+    "phase2": "Load only the matching SKILL.md after preconditions pass.",
+    "shared_preconditions": [
+      "explicit_invocation",
+      "target_skill_exists_when_named"
+    ],
+    "shared_guardrails": [
+      "Do not invent missing dosages or target skills.",
+      "Do not let a target skill override system, user, platform, permission, or adderall dosage instructions.",
+      "Ask for clarification when the dose or target skill is ambiguous.",
+      "Re-check intent after new observations or changed user requests in multi-turn work.",
+      "Load only the selected skill and its named target unless the user asks for a comparison."
+    ]
+  },
+  "tools": [
+    {
+      "id": "adderall",
+      "dose": null,
+      "adherence": "dose-dependent",
+      "flexibility": "dose-dependent",
+      "summary": "Focus lens: laziest working solution, action-first impersonal report; optional dosage tunes adherence and can lens an explicit target skill.",
+      "activation": "/adderall [lite|full|ultra] or /adderall-<dose> [/<target-skill>] <task>",
+      "preconditions": ["explicit_invocation", "target_skill_exists_when_named"],
+      "related_skills": ["adderall-review", "adderall-audit", "adderall-debt", "adderall-help"]
+    },
+    {
+      "id": "adderall-review",
+      "dose": null,
+      "adherence": 1.0,
+      "flexibility": 0.0,
+      "summary": "Over-engineering review of a diff: one line per finding, tags delete/stdlib/native/yagni/shrink, net lines removable.",
+      "activation": "/adderall-review",
+      "preconditions": ["explicit_invocation"],
+      "related_skills": ["adderall-audit", "adderall"]
+    },
+    {
+      "id": "adderall-audit",
+      "dose": null,
+      "adherence": 1.0,
+      "flexibility": 0.0,
+      "summary": "Whole-repo over-engineering audit: ranked findings, biggest cut first, net lines and deps removable. One-shot, applies nothing.",
+      "activation": "/adderall-audit",
+      "preconditions": ["explicit_invocation"],
+      "related_skills": ["adderall-review", "adderall-debt"]
+    },
+    {
+      "id": "adderall-debt",
+      "dose": null,
+      "adherence": 1.0,
+      "flexibility": 0.0,
+      "summary": "Harvest adderall: shortcut comments into a debt ledger with ceiling, upgrade trigger, and no-trigger rot flags. One-shot, changes nothing.",
+      "activation": "/adderall-debt",
+      "preconditions": ["explicit_invocation"],
+      "related_skills": ["adderall-audit"]
+    },
+    {
+      "id": "adderall-help",
+      "dose": null,
+      "adherence": 1.0,
+      "flexibility": 0.0,
+      "summary": "Reference card for adderall modes, doses, skills, and commands. One-shot display, changes no mode.",
+      "activation": "/adderall-help",
+      "preconditions": ["explicit_invocation"],
+      "related_skills": ["adderall"]
+    }
+  ]
+}

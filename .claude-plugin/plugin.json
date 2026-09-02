@@ -1,0 +1,16 @@
+{
+  "name": "adderall",
+  "version": "0.1.0",
+  "description": "Focus for Claude Code: ships the laziest solution that works and reports it action-first. Merges ponytail's YAGNI ladder with i-have-adhd's output shaping.",
+  "author": {
+    "name": "Spencer Thayer",
+    "url": "https://github.com/spencerthayer"
+  },
+  "homepage": "https://github.com/spencerthayer/adderall",
+  "repository": "https://github.com/spencerthayer/adderall",
+  "license": "MIT",
+  "commands": "./commands/",
+  "agents": [],
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/"
+}
