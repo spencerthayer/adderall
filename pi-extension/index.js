@@ -110,6 +110,19 @@ export default function adderallExtension(pi) {
 
     pi.sendUserMessage(message);
   };
+  const sendLearn = (args, ctx) => {
+    const details = String(args || "").trim();
+    const suffix = details ? ` Arguments: ${details}` : "";
+    const message = "Use the explicit Adderall learning workflow to create a bounded GEPA proposal. Treat this as a request to improve Adderall itself, not the current response. Require an explicit dollar budget before any model call. If no budget is present, ask one concise question and stop. Run scripts/evolve.py validate, create a new proposal directory, run scripts/evolve.py optimize, report the proposal and artifacts, and stop for human review. Do not overwrite the canonical skill, synchronize copies, promote, commit, push, merge, or release." + suffix;
+
+    if (ctx?.isIdle?.() === false) {
+      pi.sendUserMessage(message, { deliverAs: "followUp" });
+      ctx?.ui?.notify?.("Adderall learning request queued as follow-up.", "info");
+      return;
+    }
+
+    pi.sendUserMessage(message);
+  };
 
   pi.registerCommand("adderall", {
     description: ADDERALL_COMMAND_DESCRIPTION,
@@ -164,6 +177,10 @@ export default function adderallExtension(pi) {
   pi.registerCommand("adderall-help", {
     description: "Run /skill:adderall-help",
     handler: (_args, ctx) => sendAlias("/skill:adderall-help", "", ctx),
+  });
+  pi.registerCommand("adderall-learn", {
+    description: "Create a bounded, eval-gated GEPA proposal for Adderall",
+    handler: (args, ctx) => sendLearn(args, ctx),
   });
 
   pi.on("input", async (event) => {

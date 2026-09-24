@@ -202,18 +202,22 @@ def _strip_frontmatter(text: str) -> str:
     return text
 
 
-def _condition_prompt(task: str, condition: str, skill_path: Optional[Path]) -> str:
-    if condition == "baseline":
-        return task
-    if skill_path is None:
-        raise ValueError(f"--condition-skill is required for the {condition} condition")
-    instructions = _strip_frontmatter(skill_path.read_text(encoding="utf-8"))
+def response_style_prompt(task: str, instructions: str) -> str:
     return (
         "Follow the response-style skill below while completing the task. "
         "Do not discuss or quote the skill.\n\n"
         f"<response_style>\n{instructions}\n</response_style>\n\n"
         f"<task>\n{task}\n</task>"
     )
+
+
+def _condition_prompt(task: str, condition: str, skill_path: Optional[Path]) -> str:
+    if condition == "baseline":
+        return task
+    if skill_path is None:
+        raise ValueError(f"--condition-skill is required for the {condition} condition")
+    instructions = _strip_frontmatter(skill_path.read_text(encoding="utf-8"))
+    return response_style_prompt(task, instructions)
 
 
 def _parse_response(

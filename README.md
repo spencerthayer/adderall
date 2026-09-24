@@ -305,7 +305,8 @@ Adderall is not indicated for non-coding requests: general knowledge, prose, tra
   </picture>
 </p>
 
-The formulation is regression-tested. `evals/cases.jsonl` holds 23 cases across response shaping, minimality, voice, and dosage behavior. A paired, blind-judged harness (`evals/README.md`) gates every release: a candidate must beat the untreated baseline on weighted score with no correctness or safety regression. No efficacy claim ships beyond that gate.
+The formulation is regression-tested. `evals/cases.jsonl` holds 23 cases across response shaping, minimality, voice, and dosage behavior, with disjoint GEPA optimization splits. A paired, blind-judged harness (`evals/README.md`) gates every release: a candidate must beat the untreated baseline on weighted score with no correctness or safety regression. The optional offline GEPA workflow emits bounded, unpromoted proposals for human review. No efficacy claim ships beyond the release gate.
+Use `/adderall-learn <budget>` when explicitly asked to improve Adderall itself. It creates an unpromoted GEPA proposal; ordinary requests to improve a response do not invoke GEPA.
 
 ---
 
@@ -327,7 +328,7 @@ The formulation is regression-tested. `evals/cases.jsonl` holds 23 cases across 
 | `pi-extension/` | pi coding-agent extension: `/adderall` mode switching, status indicator, per-turn injection |
 | `.opencode/` + `opencode.json` | OpenCode plugin (always-on + slash commands) and command files |
 | `hooks/` | Always-on injection (Node + POSIX + PowerShell) and the shared config/instruction builders |
-| `evals/` + `scripts/` | Paired, blind-judged eval harness with a release gate |
+| `evals/` + `scripts/` | Paired, blind-judged eval harness with a release gate and optional bounded GEPA proposal workflow |
 
 Storage: any filesystem. Keep out of reach of agents running without supervision.
 

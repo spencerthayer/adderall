@@ -201,7 +201,7 @@ def invoke_judge(
     return text, cost
 
 
-def _judge_group(
+def judge_group(
     command: list[str],
     response_format: str,
     prompt: str,
@@ -303,7 +303,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             labels = assign_labels(key, sorted(groups[key]))
             prompt = build_judge_prompt(cases[case_id], groups[key], labels, rubric)
             try:
-                scored, cost = _judge_group(
+                scored, cost = judge_group(
                     command, response_format, prompt, key, labels, args.retries
                 )
             except (ValueError, RuntimeError) as exc:

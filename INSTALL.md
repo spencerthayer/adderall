@@ -89,3 +89,17 @@ Remove the flag file to turn always-on off for good. Say "stop adderall" to turn
 ## Evals (optional)
 
 The eval harness needs Python 3.10+ and a metered runner CLI (`claude` or `codex`). See `evals/README.md`. After editing any skill, run `python3 scripts/check-copies.py --fix` to sync the `.cursor/` and `.agents/` copies.
+
+### GEPA self-improvement
+
+Use `/adderall-learn <budget>` for an explicit request to improve Adderall itself. It creates the same unpromoted proposal and requires the budget before any provider call. A request to improve the current response does not invoke GEPA.
+
+The optional offline optimizer requires Python 3.10+ and the pinned `gepa` package:
+
+```bash
+python3 -m venv /tmp/adderall-gepa-venv
+/tmp/adderall-gepa-venv/bin/python -m pip install -r evals/requirements.txt
+python3 scripts/evolve.py validate
+```
+
+Run `scripts/evolve.py optimize` with an explicit total budget to create an unpromoted proposal. It evolves only the marked `Learned adaptations` section. The command does not edit the canonical skill, synchronize copies, promote, commit, push, or merge. Follow the proposal's `next-commands.json`, review the diff, run the complete release gate, and only then promote the reviewed `SKILL.md` manually.

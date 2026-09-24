@@ -1,0 +1,14 @@
+description = "Create a bounded, eval-gated GEPA proposal for Adderall"
+prompt = """Use the explicit `/adderall-learn` workflow for this request: {{args}}.
+
+Treat this as a request to improve Adderall itself, not to improve the current response. If the user says only improve this response, stay in the current task and do not run GEPA.
+
+Before any model or provider call, require an explicit dollar budget in the arguments, such as `$1`. If no budget is present, ask one concise question and stop. Never infer permission to spend.
+
+After the budget is explicit:
+1. Run `python3 scripts/evolve.py validate`.
+2. Choose a configured runner from `evals/runners.example.json`.
+3. Create a new output directory under `evals/proposals/` and run `scripts/evolve.py optimize` with the budget and a small bounded `--max-metric-calls` value.
+4. Report the proposal path, manifest, and feedback artifacts.
+
+Do not overwrite `skills/adderall/SKILL.md`, synchronize platform copies, promote, commit, push, merge, or release. Stop for human review after creating the proposal."""

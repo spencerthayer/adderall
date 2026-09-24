@@ -14,7 +14,7 @@ This repository distributes the **adderall** agent skill: ponytail's laziest-sol
 - `.opencode/` + `opencode.json` — OpenCode plugin (always-on + slash commands) and the command files.
 - `hooks/` — always-on injection (Node + POSIX + PowerShell) and the shared config/instruction builders used by the pi extension.
 - `examples/` — before/after model output for 11 everyday tasks.
-- `evals/` + `scripts/` — paired, blind-judged eval harness (`python3 scripts/run_evals.py validate`); `scripts/check-copies.py` verifies the platform copies match `skills/`.
+- `evals/` + `scripts/` — paired, blind-judged eval harness (`python3 scripts/run_evals.py validate`); optional offline GEPA proposals (`/adderall-learn` or `scripts/evolve.py`); `scripts/check-copies.py` verifies the platform copies match `skills/`.
 
 ## Install (as an agent)
 
@@ -34,3 +34,6 @@ This repository distributes the **adderall** agent skill: ponytail's laziest-sol
 - `.cursor/skills/` and `.agents/skills/` hold verbatim copies for hosts that only read their own directory. Run `python3 scripts/check-copies.py` (or `--fix`) after editing any skill.
 - Deliberate shortcuts in this repo are marked `adderall:` with a ceiling and upgrade path (`# adderall: O(n²) scan, index if the corpus grows`).
 - Changes to the ruleset should ship with updated eval cases (`evals/cases.jsonl`); run the release gate in `evals/README.md` before publishing claims about behavior.
+- `scripts/evolve.py` may optimize only the marked `Learned adaptations` section and must write proposals under a new output directory. It must never edit the canonical skill, synchronize copies, promote, commit, push, or merge. A human reviews the proposal and runs the complete release gate before promotion.
+- GEPA optimization uses train and validation cases only. Keep the `test` split out of reflection and candidate selection, and preserve the explicit budget and raw evidence artifacts.
+- `/adderall-learn` and explicit skill-learning phrases must require a budget, create an unpromoted proposal, and stop for review. They must not trigger for requests to improve the current response.

@@ -1,6 +1,6 @@
 # Evaluations
 
-The harness compares response quality, not just length. Cases live in `cases.jsonl` (14 response-shaping cases from the i-have-adhd lineage plus 4 minimality cases covering the ponytail ladder: native-over-dependency, stdlib-over-custom, reuse-over-reinvent, over-build-trap); the scoring contract lives in `rubric.md`.
+The harness compares response quality, not just length. `cases.jsonl` holds 23 cases across response shaping, minimality, voice, dosage, and GEPA split metadata; the scoring contract lives in `rubric.md`.
 
 ## Validate and plan
 
@@ -37,6 +37,35 @@ Both example runners isolate the call from the operator's own agent configuratio
 Isolation also drops the operator's saved model and effort settings, so the claude runner pins `--model` explicitly. Keep a pin when editing the runner: without one, the eval silently runs whatever the operator (or the CLI release) defaults to; the model would vary between operators and over time, and per-token cost varies with it. The pinned model is part of the result: record it with published numbers.
 
 Runs are resumable: rerun the same command after a provider failure and completed `(case, trial, condition, runner)` rows are skipped. Each incomplete call is retried twice by default, and the final provider error is preserved.
+
+## GEPA self-improvement
+
+GEPA is an optional, offline maintainer workflow. It evolves only the text between `<!-- gepa:start -->` and `<!-- gepa:end -->` in a proposed copy of `skills/adderall/SKILL.md`. It never edits the canonical skill, synchronizes platform copies, promotes a candidate, commits, pushes, or merges.
+Invoke this workflow with `/adderall-learn <budget>` when the user explicitly asks to improve Adderall itself. Do not use it for a request to improve the current response.
+
+Install the pinned optimizer in an isolated environment:
+
+```bash
+python3 -m venv /tmp/adderall-gepa-venv
+/tmp/adderall-gepa-venv/bin/python -m pip install -r evals/requirements.txt
+```
+
+Validate the marker and split contract, then create a proposal with an explicit total budget:
+
+```bash
+python3 scripts/evolve.py validate
+
+/tmp/adderall-gepa-venv/bin/python scripts/evolve.py optimize \
+  --runner claude \
+  --output-dir evals/proposals/2026-09-24-gepa \
+  --max-metric-calls 20 \
+  --budget-usd 12.50
+```
+
+`train` cases drive reflection, `validation` cases select candidates, and `test` cases stay out of optimization. The output directory contains the proposed `SKILL.md`, raw optimization responses, feedback, manifest, and `next-commands.json`. Run those commands against the same runner, cases, rubric, model pin, and trial count. Promotion remains a human-reviewed step after the complete release gate passes, followed by `python3 scripts/check-copies.py --fix` and a copy verification.
+
+Metered calls require an explicit budget. Do not use `--allow-unmetered` unless the provider account has a separate hard cap.
+
 
 ## Judge and score
 

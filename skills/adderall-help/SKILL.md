@@ -51,9 +51,11 @@ target skills are asked about, never invented.
 | **adderall-audit** | `/adderall-audit` | Whole-repo over-engineering audit: ranked list of what to delete. |
 | **adderall-debt** | `/adderall-debt` | Harvest `adderall:` shortcut comments into a tracked ledger. |
 | **adderall-help** | `/adderall-help` | This card. |
+| **adderall-learn** | `/adderall-learn` | Explicit, budgeted GEPA proposal for improving Adderall itself. Never triggers for improving the current response. |
 
-OpenCode ships all five as slash commands. Claude Code and Codex use the
-`/adderall` skill form and the sub-skill names.
+OpenCode ships the commands as slash commands. Claude Code and Codex use the
+`/adderall` skill form and the sub-skill names. `/adderall-learn` requires an
+explicit dollar budget and creates a proposal for human review.
 
 ## Deactivate
 

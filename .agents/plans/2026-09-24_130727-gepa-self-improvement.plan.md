@@ -4,55 +4,65 @@ overview: Add an offline, budget-bounded GEPA loop that evolves only a marked Ad
 todos:
   - id: task-1-establish-branch
     content: Establish the no-ticket branch and record clean baseline checks
-    status: pending
+    status: completed
     dependencies: []
   - id: task-2-create-failing-seam
     content: Create the evolve test seam and failing artifact-boundary tests
-    status: pending
+    status: completed
     dependencies:
       - task-1-establish-branch
   - id: task-3-add-splits-and-markers
     content: Add disjoint GEPA case splits and the bounded skill markers
-    status: pending
+    status: completed
     dependencies:
       - task-2-create-failing-seam
   - id: task-4-expose-eval-reuse
     content: Expose reusable prompt and paired-judge helpers without changing behavior
-    status: pending
+    status: completed
     dependencies:
       - task-2-create-failing-seam
   - id: task-5-implement-eval-adapter
     content: Implement marker, split, scoring, and side-information functions
-    status: pending
+    status: completed
     dependencies:
       - task-3-add-splits-and-markers
       - task-4-expose-eval-reuse
   - id: task-6-implement-gepa-cli
     content: Implement the budgeted GEPA CLI and proposal artifacts
-    status: pending
+    status: completed
     dependencies:
       - task-5-implement-eval-adapter
   - id: task-7-prove-gepa-cycle
     content: Prove a real GEPA cycle with deterministic fake model roles
-    status: pending
+    status: completed
     dependencies:
       - task-6-implement-gepa-cli
   - id: task-8-document-workflow
     content: Document installation, optimization, review, and release-gate workflow
-    status: pending
+    status: completed
     dependencies:
       - task-6-implement-gepa-cli
   - id: task-9-run-release-checks
     content: Run unit, copy, validation, and end-to-end release checks
-    status: pending
+    status: completed
     dependencies:
       - task-7-prove-gepa-cycle
       - task-8-document-workflow
   - id: task-10-finalize-checkpoint
     content: Review the scoped diff and finalize the execution checkpoint
-    status: pending
+    status: completed
     dependencies:
       - task-9-run-release-checks
+  - id: task-11-explicit-learn-command
+    content: Add an explicit budgeted learning trigger across supported hosts
+    status: completed
+    dependencies:
+      - task-10-finalize-checkpoint
+  - id: task-12-verify-and-commit
+    content: Verify the learning trigger and commit the completed work
+    status: completed
+    dependencies:
+      - task-11-explicit-learn-command
 isProject: true
 ---
 
@@ -60,7 +70,7 @@ isProject: true
 
 **Goal:** Make Adderall improve from measured response-quality feedback through an offline GEPA loop that can evolve only a small, explicitly bounded skill section and can never promote itself.
 
-**Architecture:** Use the standalone `gepa` package's `optimize_anything` API, not `dspy.GEPA`. The existing isolated runner and blind judge produce candidate responses, weighted scores, blockers, and textual notes. Those results become GEPA's scalar metric and Actionable Side Information. GEPA evolves text only between `<!-- gepa:start -->` and `<!-- gepa:end -->` in `skills/adderall/SKILL.md`; the command writes a new proposal directory and leaves the canonical skill, platform copies, branches, and releases untouched.
+**Architecture:** Use the standalone `gepa` package's `optimize_anything` API, not `dspy.GEPA`. The existing isolated runner and blind judge produce candidate responses, weighted scores, blockers, and textual notes. Those results become GEPA's scalar metric and Actionable Side Information. GEPA evolves text only between `<!-- gepa:start -->` and `<!-- gepa:end -->` in `skills/adderall/SKILL.md`; the command writes a new proposal directory and leaves the canonical skill, platform copies, branches, and releases untouched. Explicit `/adderall-learn` host commands and skill triggers route only deliberate requests to improve Adderall itself. They never trigger for a request to improve the current response.
 
 **Tech Stack:** Python 3.10+, standard library for the repository harness and tests, `gepa==0.1.4` as an optional eval dependency, existing Claude or Codex CLI runner configuration, JSON/JSONL artifacts, Markdown skill files.
 
@@ -121,32 +131,34 @@ If the same check fails again without new evidence, change the diagnostic approa
 
 | Field | Current state |
 |---|---|
-| Phase | Planning complete; implementation not started |
+| Phase | Follow-up implementation complete; committed locally |
 | Active task | None |
-| Last confirmed result | Repository structure, eval flow, GEPA documentation, and current `gepa` package metadata were inspected read-only |
-| Current approach | Standalone GEPA over a marked overlay, with paired blind evaluation and no automatic promotion |
-| Blockers / open decisions | None for planning. Implementation requires explicit authorization. Metered provider evaluation requires a separate explicit spending limit. |
-| Next action | After implementation is requested, run Task 1, create or check out `gepa-self-improvement`, and record baseline checks |
+| Last confirmed result | Commit `bc7e7e2` created on `gepa-self-improvement`; 27 files changed, including explicit `/adderall-learn` commands, skill routing, tests, and documentation |
+| Current approach | Explicit budgeted learning triggers are available across supported hosts; ordinary response improvement remains unchanged |
+| Blockers / open decisions | Metered provider evaluation was not run because no explicit spending limit was authorized. No push or merge was performed. |
+| Next action | No implementation action remains. Review commit `bc7e7e2` before any human-requested push or pull request |
 
 ## Task dependency graph
 
 ```mermaid
 flowchart TD
   subgraph prepare [Prepare]
-    task_1_establish_branch(["☐ task-1-establish-branch<br/>Establish the no-ticket branch and record clean baseline checks"])
-    task_2_create_failing_seam("☐ task-2-create-failing-seam<br/>Create the evolve test seam and failing artifact-boundary tests")
-    task_3_add_splits_and_markers{{"☐ task-3-add-splits-and-markers<br/>Add disjoint GEPA case splits and the bounded skill markers"}}
-    task_4_expose_eval_reuse{{"☐ task-4-expose-eval-reuse<br/>Expose reusable prompt and paired-judge helpers without changing behavior"}}
+    task_1_establish_branch(["☑ task-1-establish-branch<br/>Establish the no-ticket branch and record clean baseline checks"])
+    task_2_create_failing_seam(["☑ task-2-create-failing-seam<br/>Create the evolve test seam and failing artifact-boundary tests"])
+    task_3_add_splits_and_markers{{"☑ task-3-add-splits-and-markers<br/>Add disjoint GEPA case splits and the bounded skill markers"}}
+    task_4_expose_eval_reuse{{"☑ task-4-expose-eval-reuse<br/>Expose reusable prompt and paired-judge helpers without changing behavior"}}
   end
   subgraph implement [Implement]
-    task_5_implement_eval_adapter{{"☐ task-5-implement-eval-adapter<br/>Implement marker, split, scoring, and side-information functions"}}
-    task_6_implement_gepa_cli{{"☐ task-6-implement-gepa-cli<br/>Implement the budgeted GEPA CLI and proposal artifacts"}}
+    task_5_implement_eval_adapter{{"☑ task-5-implement-eval-adapter<br/>Implement marker, split, scoring, and side-information functions"}}
+    task_6_implement_gepa_cli{{"☑ task-6-implement-gepa-cli<br/>Implement the budgeted GEPA CLI and proposal artifacts"}}
   end
   subgraph verify [Verify and document]
-    task_7_prove_gepa_cycle(["☐ task-7-prove-gepa-cycle<br/>Prove a real GEPA cycle with deterministic fake model roles"])
-    task_8_document_workflow{{"☐ task-8-document-workflow<br/>Document installation, optimization, review, and release-gate workflow"}}
-    task_9_run_release_checks{"☐ task-9-run-release-checks<br/>Run unit, copy, validation, and end-to-end release checks"}
-    task_10_finalize_checkpoint("☐ task-10-finalize-checkpoint<br/>Review the scoped diff and finalize the execution checkpoint")
+    task_7_prove_gepa_cycle(["☑ task-7-prove-gepa-cycle<br/>Prove a real GEPA cycle with deterministic fake model roles"])
+    task_8_document_workflow{{"☑ task-8-document-workflow<br/>Document installation, optimization, review, and release-gate workflow"}}
+    task_9_run_release_checks{"☑ task-9-run-release-checks<br/>Run unit, copy, validation, and end-to-end release checks"}
+    task_10_finalize_checkpoint("☑ task-10-finalize-checkpoint<br/>Review the scoped diff and finalize the execution checkpoint")
+    task_11_explicit_learn_command{{"☑ task-11-explicit-learn-command<br/>Add an explicit budgeted learning trigger across supported hosts"}}
+    task_12_verify_and_commit{{"☑ task-12-verify-and-commit<br/>Verify the learning trigger and commit the completed work"}}
   end
   task_1_establish_branch -->|branch and baseline recorded| task_2_create_failing_seam
   task_2_create_failing_seam -->|intended failures established| task_3_add_splits_and_markers
@@ -159,6 +171,8 @@ flowchart TD
   task_7_prove_gepa_cycle -->|real engine path proven offline| task_9_run_release_checks
   task_8_document_workflow -->|commands and boundaries documented| task_9_run_release_checks
   task_9_run_release_checks -->|all required checks pass| task_10_finalize_checkpoint
+  task_10_finalize_checkpoint -->|explicit learning scope| task_11_explicit_learn_command
+  task_11_explicit_learn_command -->|host commands and tests pass| task_12_verify_and_commit
   classDef evidence fill:#ede9fe,stroke:#7c3aed,color:#111827
   classDef data fill:#fee2e2,stroke:#dc2626,color:#111827
   classDef runtime fill:#ffedd5,stroke:#ea580c,color:#111827
@@ -166,10 +180,24 @@ flowchart TD
   class task_1_establish_branch,task_7_prove_gepa_cycle runtime
   class task_2_create_failing_seam,task_10_finalize_checkpoint evidence
   class task_3_add_splits_and_markers,task_4_expose_eval_reuse,task_5_implement_eval_adapter,task_6_implement_gepa_cli,task_8_document_workflow data
+  class task_11_explicit_learn_command,task_12_verify_and_commit data
   class task_9_run_release_checks gate
+  style task_1_establish_branch stroke-width:4px
+  style task_2_create_failing_seam stroke-width:4px
+  style task_3_add_splits_and_markers stroke-width:4px
+  style task_4_expose_eval_reuse stroke-width:4px
+  style task_5_implement_eval_adapter stroke-width:4px
+  style task_6_implement_gepa_cli stroke-width:4px
+  style task_7_prove_gepa_cycle stroke-width:4px
+  style task_8_document_workflow stroke-width:4px
+  style task_9_run_release_checks stroke-width:4px
+  style task_10_finalize_checkpoint stroke-width:4px
+  style task_11_explicit_learn_command stroke-width:4px
+  style task_12_verify_and_commit stroke-width:4px
   style prepare fill:#f5f3ff,stroke:#7c3aed,color:#111827
   style implement fill:#fff7f7,stroke:#dc2626,color:#111827
   style verify fill:#f8fafc,stroke:#111827,color:#111827
+  style task_12_verify_and_commit stroke-width:4px
 ```
 
 ### Task 1: Establish the no-ticket branch and record clean baseline checks
@@ -583,7 +611,7 @@ optimization-feedback.jsonl
 next-commands.json
 ```
 
-`manifest.json` records timestamps, Python and `gepa` versions, source and proposal SHA-256 values, case IDs by split, runner names, runner-config hash, rubric hash, budget, calls, and cost. It excludes environment variables, auth data, and full runner commands.
+`manifest.json` records timestamps, Python version, `importlib.metadata.version("gepa")`, source and proposal SHA-256 values, case IDs by split, runner names, runner-config hash, rubric hash, budget, calls, and cost. It excludes environment variables, auth data, and full runner commands. The installed package has no `gepa.__version__`, so the metadata API is the version source.
 
 `next-commands.json` contains copy-pasteable commands that run the full 23-case baseline and candidate matrix, blind judge, and `run_evals.py score`. These commands are informational only. `evolve.py` does not execute the final release gate or promotion.
 
@@ -774,12 +802,111 @@ Read the complete diff. Confirm:
 
 Update every task status, dependency, Mermaid mark, checkpoint field, and evidence entry to match actual state. Preserve failed and superseded checks. Record the exact next action even if all work is complete.
 
+## Follow-up requirement: explicit learning trigger
+
+The completed offline workflow remains the execution boundary. The new trigger is explicit and user-invoked: `/adderall-learn`, "improve the Adderall skill", "learn from this coding session", or "update Adderall". It must not treat "improve this response" as a request to mutate the skill. Host commands must require or request a budget before any provider call, create a new proposal directory, and stop for human review.
+
+### Task 11: Add an explicit budgeted learning trigger across supported hosts
+
+**Objective:** Make explicit learning requests invoke the existing proposal workflow without enabling automatic learning during ordinary use.
+
+**Files:**
+- Create: `commands/adderall-learn.toml`
+- Create: `.opencode/command/adderall-learn.md`
+- Modify: `pi-extension/index.js:149-167`
+- Modify: `skills/adderall/SKILL.md:1-20,152-160`
+- Modify through explicit sync: `.cursor/skills/adderall/SKILL.md`
+- Modify through explicit sync: `.agents/skills/adderall/SKILL.md`
+- Modify: `skills/adderall-help/SKILL.md`
+- Modify through explicit sync: `.cursor/skills/adderall-help/SKILL.md`
+- Modify through explicit sync: `.agents/skills/adderall-help/SKILL.md`
+- Modify: `.agents/rules/adderall.md`
+- Modify: `evals/README.md`, `INSTALL.md`, `README.md`, `AGENTS.md`
+- Create: `tests/test_learn_command.py`
+
+**Step 1: Write command contract tests**
+
+Assert that every host command file names `/adderall-learn`, requires a budget, runs `scripts/evolve.py`, creates a proposal, and never instructs the agent to overwrite the canonical skill. Assert that the pi extension registers the command and the canonical skill distinguishes explicit skill learning from improving the current response.
+
+**Step 2: Run the red test**
+
+```bash
+exec /bin/bash -lc 'python3 -m unittest discover -s tests -p "test_learn_command.py" -v'
+```
+
+Expected: FAIL because the host command files and pi registration do not exist.
+
+**Step 3: Add host commands and skill routing**
+
+Use the existing command formats. The Claude/Codex command must require an explicit budget argument before running GEPA. OpenCode uses `$ARGUMENTS`; pi sends a plain learning instruction through `pi.sendUserMessage` so it does not recursively invoke its own slash handler. The canonical skill must say that ordinary "improve this response" requests stay in the current task.
+
+**Step 4: Update help and condensed rules**
+
+Add `/adderall-learn` to the help card, generic agent rule, installation docs, eval docs, and repository policy. Do not add automatic runtime telemetry or a background watcher.
+
+**Step 5: Synchronize skill copies and run tests**
+
+```bash
+exec /bin/bash -lc 'python3 scripts/check-copies.py --fix'
+exec /bin/bash -lc 'python3 scripts/check-copies.py'
+exec /bin/bash -lc 'python3 -m unittest discover -s tests -p "test_learn_command.py" -v'
+```
+
+Expected: command contract tests pass and all skill copies are synchronized.
+
+### Task 12: Verify the learning trigger and commit the completed work
+
+**Objective:** Run the full suite, inspect the final diff, and create the user-requested commit without pushing or merging.
+
+**Files:**
+- Read: all changed files
+- Modify: this `.plan.md` only
+
+**Step 1: Run full verification**
+
+```bash
+exec /bin/bash -lc 'python3 -m py_compile scripts/evolve.py scripts/run_evals.py scripts/judge.py'
+exec /bin/bash -lc '/tmp/adderall-gepa-venv/bin/python -m unittest discover -s tests -v'
+exec /bin/bash -lc 'python3 scripts/run_evals.py validate'
+exec /bin/bash -lc 'python3 scripts/evolve.py validate'
+exec /bin/bash -lc 'python3 scripts/check-copies.py'
+```
+
+Expected: syntax, all tests, case validation, GEPA validation, and copy validation pass.
+
+**Step 2: Check JavaScript and command wiring**
+
+```bash
+exec /bin/bash -lc 'node --check pi-extension/index.js'
+```
+
+Expected: pi extension syntax passes.
+
+**Step 3: Review and commit**
+
+```bash
+exec /bin/bash -lc 'git diff --check'
+exec /bin/bash -lc 'git status --short'
+exec /bin/bash -lc 'git add .agents/plans/2026-09-24_130727-gepa-self-improvement.plan.md .agents/rules/adderall.md .agents/skills .cursor/skills AGENTS.md INSTALL.md README.md commands/adderall-learn.toml evals/README.md evals/cases.jsonl evals/requirements.txt pi-extension/index.js scripts/evolve.py scripts/judge.py scripts/run_evals.py skills tests .opencode/command/adderall-learn.md'
+exec /bin/bash -lc 'git commit -m "feat: add explicit GEPA learning trigger"'
+```
+
+Expected: one local commit on `gepa-self-improvement`; no push, merge, or release.
+
 ## Files likely to change
 
 - `skills/adderall/SKILL.md`
 - `.cursor/skills/adderall/SKILL.md`
 - `.agents/skills/adderall/SKILL.md`
 - `scripts/evolve.py`
+- `commands/adderall-learn.toml`
+- `.opencode/command/adderall-learn.md`
+- `pi-extension/index.js`
+- `skills/adderall-help/SKILL.md`
+- `.cursor/skills/adderall-help/SKILL.md`
+- `.agents/skills/adderall-help/SKILL.md`
+- `.agents/rules/adderall.md`
+- `tests/test_learn_command.py`
 - `scripts/run_evals.py`
 - `scripts/judge.py`
 - `evals/cases.jsonl`
@@ -812,6 +939,7 @@ Update every task status, dependency, Mermaid mark, checkpoint field, and eviden
 - Proposal artifacts and source-hash immutability.
 - Full fake-runner release gate.
 - Case validation, GEPA validation, and platform-copy validation.
+- Explicit `/adderall-learn` host command wiring, budget gating, and pi syntax.
 
 ### Acceptance criteria
 
@@ -846,6 +974,20 @@ Update every task status, dependency, Mermaid mark, checkpoint field, and eviden
 | 2026-09-24 13:07 UTC-7 | Planning, official GEPA docs | Standalone GEPA could evolve Markdown text without DSPy | Observed: `optimize_anything` supports text artifacts, evaluator side information, validation data, and callable reflection models | Prefer standalone `gepa`; verify installed 0.1.4 signatures in Task 6 |
 | 2026-09-24 13:07 UTC-7 | Planning, PyPI metadata | A current Python 3.10+ package version would be available | Observed: `gepa` 0.1.4 supports Python `>=3.10,<3.15` and exposes `optimize_anything` | Pin `gepa==0.1.4` as an optional eval dependency |
 | 2026-09-24 13:07 UTC-7 | Planning, user clarification | A tracker ticket would be required unless the user confirmed none | Observed: user confirmed there is no ticket ID | Use branch `gepa-self-improvement` in Task 1 |
+| 2026-09-24 13:15 UTC-7 | Task 1, `gepa-self-improvement` at `a405802` | Branch creation, case validation, and copy validation would succeed before source edits | Observed: branch created; `Evaluation cases are valid.`; `All platform copies in sync with skills/ (5 skills x 2 dirs).` | Outcome `pass`; begin Task 2 |
+| 2026-09-24 13:18 UTC-7 | Task 2, Python 3 unittest | Marker tests would fail through the seam for missing behavior | Observed: all three tests reached `extract_overlay` or `render_skill` and raised `NotImplementedError`; no import or setup failure | Outcome `pass` as the intended red check; begin Task 3 |
+| 2026-09-24 13:24 UTC-7 | Task 3, case validation, split unittest, copy checker | Split test would fail before metadata, then all splits and copies would validate | Observed: initial split test failed on empty split sets; after metadata, `Evaluation cases are valid.`, split test passed, and both copies synchronized | Outcome `pass`; begin Task 4 |
+| 2026-09-24 13:32 UTC-7 | Task 4, Python unittest and exact-symbol search | Public helper tests would fail before refactor, then preserve existing behavior | LSP unavailable; exact-symbol search found callers at `run_evals.py:288` and `judge.py:306`; both helper tests passed. One planned `-k prompt` selector matched zero tests and exited 5, then corrected to `-k response_style` passed | Outcome `pass`; begin Task 5 |
+| 2026-09-24 13:40 UTC-7 | Task 5, Python unittest | Pure adapter tests would fail before implementation, then all marker, split, and scoring tests would pass | Observed: all 9 evolve tests and 2 eval reuse tests passed with no unexpected skips | Outcome `pass`; begin Task 6 |
+| 2026-09-24 13:47 UTC-7 | Task 6, `/tmp/adderall-gepa-venv` | Pinned GEPA would install and expose the documented optimization API | Observed: `gepa==0.1.4` installed; `optimize_anything` accepts `seed_candidate`, `evaluator`, `dataset`, `valset`, `objective`, `background`, `config`; `GEPAConfig` composes `EngineConfig` and `ReflectionConfig`; `LanguageModel` accepts a string or message list and returns text; package has no `__version__` | Outcome `pass`; revised version handling to `importlib.metadata.version`; continue CLI implementation |
+| 2026-09-24 14:05 UTC-7 | Task 7, `/tmp/adderall-gepa-venv` and deterministic fake roles | Real GEPA would produce a bounded candidate and preserve the existing release gate | Initial smoke failed because the final judge command omitted `--cases`; corrected test supplied the fixture case path; rerun passed in 0.925s with proposal, manifest, JSONL artifacts, unchanged source hash, and release gate pass | Outcome `pass`; begin Task 8 |
+| 2026-09-24 14:18 UTC-7 | Task 8, `evolve.py --help`, validation, copy checker | Documented commands would run against existing paths and stop at proposal review | Observed: help exited zero; validation reported `train=13, validation=5, test=5`; copy check passed | Outcome `pass`; begin Task 9 |
+| 2026-09-24 14:32 UTC-7 | Task 9, full verification | Syntax, unit, repository, copy, docs, and real GEPA smoke checks would pass | Observed: `py_compile` passed; 15 tests passed in 2.131s; case and GEPA validation passed; copies passed; real GEPA smoke passed in 0.860s; help and documented validation passed | Outcome `pass`; begin Task 10 |
+| 2026-09-24 14:48 UTC-7 | Task 10, final review | Changed scope would stay within planned files and all current checks would remain green | `git diff --name-only` showed only planned files; generated `__pycache__` directories were removed; follow-up command review found missing `--cases` and `--rubric`, fixed them, reran the real GEPA smoke and full suite, and all passed | Outcome `pass`; implementation complete, no commit or push performed |
+| 2026-09-24 15:02 UTC-7 | Task 11, explicit learning trigger request | The user requested that explicit improve/learn requests invoke GEPA and asked for a commit | Observed: the existing implementation had no host command or skill route; the new contract test failed because command files and pi registration were absent, after correcting a test syntax typo | Outcome `pass` as the intended red check; implement explicit host routing |
+| 2026-09-24 15:20 UTC-7 | Task 11, command contract and copy checks | Host commands, skill routing, help text, and pi registration would exist and remain synchronized | Observed: all 3 learning command tests passed; `check-copies.py --fix` updated canonical copies; copy verification passed | Outcome `pass`; begin Task 12 |
+| 2026-09-24 15:35 UTC-7 | Task 12, full verification | All explicit-trigger changes would pass syntax, tests, validation, and whitespace checks before commit | TOML parsing and `node --check` passed; 18 tests passed in 2.185s; case and GEPA validation passed; copies passed; `git diff --check` passed | Outcome `pass`; commit remains the only authorized next action |
+| 2026-09-24 15:45 UTC-7 | Task 12, local commit | The verified follow-up would be captured in one local commit without push or merge | Staged diff passed `git diff --cached --check`; commit `bc7e7e2` created with 27 files changed | Outcome `pass`; implementation committed locally |
 
 ## Decisions log
 

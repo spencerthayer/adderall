@@ -1,0 +1,3 @@
+{"id":"fake-train","category":"smoke","prompt":"Fix add() so it adds.","risk":"low","criteria":["Leads with the fix."],"split":"train"}
+{"id":"fake-validation","category":"smoke","prompt":"Fix multiply() so it multiplies.","risk":"low","criteria":["Leads with the fix."],"split":"validation"}
+{"id":"fake-test","category":"smoke","prompt":"Fix divide() so it divides.","risk":"low","criteria":["Leads with the fix."],"split":"test"}

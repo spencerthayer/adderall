@@ -1,0 +1,14 @@
+{
+  "task": {
+    "command": ["python3", "tests/fixtures/fake_model.py", "task"],
+    "response_format": "text"
+  },
+  "judge": {
+    "command": ["python3", "tests/fixtures/fake_model.py", "judge"],
+    "response_format": "text"
+  },
+  "reflection": {
+    "command": ["python3", "tests/fixtures/fake_model.py", "reflection"],
+    "response_format": "text"
+  }
+}

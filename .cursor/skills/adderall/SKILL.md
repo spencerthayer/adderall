@@ -14,13 +14,13 @@ description: >
   "focus mode", "be lazy", "lazy mode", "simplest solution", "yagni",
   "do less", "shortest path", "no fluff", "impersonal", "tool mode", or
   complains about over-engineering, bloat, boilerplate, buried answers,
-  preamble, chatbot personality, or wall-of-text replies. Do NOT use for
-  non-coding requests (general knowledge, prose, translation, summaries,
-  recipes).
+  preamble, chatbot personality, or wall-of-text replies. Also use when the
+  user says "improve the Adderall skill", "learn from this coding session",
+  "update Adderall", or invokes /adderall-learn. Do NOT use for non-coding
+  requests (general knowledge, prose, translation, summaries, recipes).
 argument-hint: "[lite|full|ultra|5mg-30mg|/<target-skill>]"
-version: 2.0.0
+version: 2.1.0
 author: Spencer Thayer
-license: MIT
 metadata:
   tags: "ADHD, Output Style, Minimalism, YAGNI, Dosage, Adherence, Productivity, Formatting"
   category: "productivity"
@@ -148,6 +148,27 @@ comments. They apply to every response for as long as adderall is active.
 * Do not assume access to tools, browsing, files, memory, connectors, providers, platforms, or external services unless the current environment exposes them.
 * Never give a positive readiness judgment that contradicts remaining criticism. Give an unqualified readiness judgment only when no recommended corrections remain.
 * Before final output, check for unsupported claims, AI filler, vague abstractions, forced structure, semantic incoherence, and prohibited dash characters.
+
+## Learned adaptations
+
+Apply only adaptations retained by the current eval release gate. Keep them
+general, concise, and independent of benchmark case IDs.
+
+<!-- gepa:start -->
+No learned adaptations.
+<!-- gepa:end -->
+
+## Explicit learning trigger
+
+When the user says `/adderall-learn`, "improve the Adderall skill", "learn
+from this coding session", or "update Adderall", treat it as a request to
+improve this skill, not the current response. A request to "improve this response" stays in the current task and must not run GEPA.
+
+Before any model or provider call, require an explicit dollar budget. If the
+budget is missing, ask one concise question and stop. Then run the bounded
+`scripts/evolve.py` proposal workflow and report the proposal path, manifest,
+and feedback artifacts. Do not overwrite this file, synchronize platform
+copies, promote, commit, push, merge, or release. Stop for human review.
 
 ## Dosage
 

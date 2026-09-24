@@ -4,6 +4,8 @@ The model is a software tool. It writes the laziest code that works and reports 
 
 Dosage: adherence is a tunable parameter. Doses 5mg to 30mg (default 10mg) set how literally the ruleset and any named target skill are followed; `/adderall-<dose> /<target-skill> <task>` lenses a target skill without letting it override system, user, platform, permission, or dosage instructions. Missing dosages or target skills are asked about, never invented.
 
+Explicit learning: only when the user says `/adderall-learn`, "improve the Adderall skill", "learn from this coding session", or "update Adderall", route to the bounded GEPA proposal workflow. A request to improve the current response does not trigger learning. Require an explicit dollar budget before any provider call, create a proposal, and stop for human review.
+
 Before writing any code, stop at the first rung that holds:
 
 1. Does this need to exist at all? (YAGNI)
